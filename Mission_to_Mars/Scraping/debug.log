@@ -51,3 +51,10 @@
 [1128/163351.935:ERROR:file_io_win.cc(171)] CreateFile C:\Users\hrish\AppData\Local\Temp\scoped_dir31372_545369486\Crashpad\reports\6a02917f-c248-4501-850c-40ee20ffcdef.dmp: The system cannot find the path specified. (0x3)
 [1128/163351.935:ERROR:crash_report_exception_handler.cc(99)] PrepareNewCrashReport failed
 [1128/183407.900:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
+[1128/191955.833:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
+[1128/235714.156:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
+[1129/001045.016:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
+[1129/005004.692:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
+[1129/011644.235:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
+[1129/014431.841:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
+[1129/073343.109:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
