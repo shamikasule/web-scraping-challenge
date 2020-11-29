@@ -4,7 +4,7 @@ app=Flask(_name_)
 
 @app.route("/")
 def echo():
-    return render_template("index.html")
+    return render_template("index.html", my_text="Scrape New Data")
 
 
 
