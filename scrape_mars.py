@@ -1,5 +1,6 @@
 from splinter import Browser
 from bs4 import BeautifulSoup as bs
+import pandas as pd
 import requests
 from webdriver_manager.chrome import ChromeDriverManager
 import time
@@ -12,13 +13,16 @@ def init_browser():
 def scrape():
     #---Mars News---------------------------------------------------------------------------
     browser = init_browser()
-    #title_results = []
-    final_results = []
+    
+    final_results = {}
+
+    #url
     url_title="https://mars.nasa.gov/news/"
     browser.visit(url_title)
 
     time.sleep(1)
 
+    #Scrape page into soup
     html=browser.html
     soup=bs(browser.html,'html.parser')
 
@@ -27,20 +31,24 @@ def scrape():
     news_title=results_title[1].text
 
     #Store data in a dictionary
-    results = {"title": news_title}
+    #results = {"title": news_title}
 
     #Quit browser after scraping
     browser.quit()
-    final_results.append(results)
 
-    #------------------------------------------------------------------------------
+    #Create dictionary
+    final_results["title"]=news_title
+
+    #----Mars Para--------------------------------------------------------------------------
     browser = init_browser()
-    # para_results = []
+    
+    #url
     url_para="https://mars.nasa.gov/news/8805/moxie-could-help-future-rockets-launch-off-mars/"
     browser.visit(url_para)
 
     time.sleep(1)
 
+    #Scrape page into soup
     html=browser.html
     soup=bs(browser.html,'html.parser')
 
@@ -49,15 +57,18 @@ def scrape():
     find('p').text
 
     #Store data in a dictionary
-    results2 = {"para": news_p}
+    #results2 = {"para": news_p}
 
     #Quit browser after scraping
     browser.quit()
-    final_results.append(results2)
+    
+    #Create dictionary
+    final_results["para"]=news_p
     
     #-------Featured Image-----------------------------------------------------------------------
     browser = init_browser()
 
+    #url
     url_image = 'https://www.jpl.nasa.gov/spaceimages/details.php?id=PIA24247'
     base_url_img='https://www.jpl.nasa.gov'
 
@@ -65,6 +76,7 @@ def scrape():
 
     time.sleep(1)
 
+    #Scrape page into soup
     html=browser.html
     soup=bs(browser.html,'html.parser')
 
@@ -75,15 +87,13 @@ def scrape():
         i=image.find('img')
         featured_image_url=(base_url_img+i["src"])
 
-    #Store data in a dictionary
-    results3 = {"img_url": featured_image_url}
-    final_results.append(results3)   
-
+    #Create dictionary
+    #results3 = {"img_url": featured_image_url}
+    final_results["img_url"]=featured_image_url
+ 
     #Quit browser after scraping
     browser.quit()
 
-    #Return results
-    return final_results
 
     #-------Facts Table-----------------------------------------------------------------------
     browser = init_browser()
@@ -108,4 +118,8 @@ def scrape():
 #print(table_data)
 
     #Store data in a dictionary
-    final_results.append(table_data)
+    final_results["table_data"]=table_data
+    #final_results.append(table_data)
+
+    #Return results
+    return final_results
